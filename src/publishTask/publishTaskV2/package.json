@@ -1,0 +1,26 @@
+{
+  "name": "rpa",
+  "version": "1.0.0",
+  "description": "rpa tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "RPA",
+    "robot",
+    "process",
+    "automation",
+    "robots"
+  ],
+  "author": "Gopal Ramadugu",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
+    "axios": "^0.18.0",
+    "azure-pipelines-task-lib": "^2.7.7",
+    "form-data": "^2.3.3",
+    "vso-task-lib": "^0.5.5"
+  }
+}

@@ -1,0 +1,49 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+#  tfx extension create --manifest-globs vss-extension.json --override "{\"version\": \"${{ parameters.version }}\"}"
+parameters:
+
+- name: version
+  displayName: 'Extension Version'
+  type: string
+  default: 0.1.18 
+
+trigger:
+- main
+
+pool:
+  pool: AFC-Devops-AWS-Agent
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+- script: | 
+    npm install -g tfx-cli 
+    npm install
+    cd src/publishTask/publishTaskV1
+    cd ../../publishTask/publishTaskV2
+    cd ../../releaseTask/releaseTaskV1
+    cd ../../releaseTask/releaseTaskV2
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run-script build'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'npm run-script package'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '*.vsix'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'npm install and build'

@@ -1,0 +1,107 @@
+{
+  "id": "c0d4343f-c8a3-4a3a-8f36-37a3b4d95ef3",
+  "name": "RPApublishTasks",
+  "friendlyName": "RPA Publish Tasks",
+  "description": "This Task helps us deploy RPA Nuget Package and make it current",
+  "author": "Gopal Ramadugu",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "RPAPublishTask",
+  "groups": [
+    {
+        "name": "authenticate",
+        "displayName": "Authenticate",
+        "isExpanded": true
+    },
+    {
+        "name": "publish",
+        "displayName": "Publish",
+        "isExpanded": false
+    }        
+  ],
+  "inputs": [
+    {
+      "name": "authenticateurl",
+      "type": "string",
+      "label": "URL",
+      "defaultValue": "",
+      "required": true,
+      "groupName": "authenticate",
+      "helpMarkDown": "Authenticate url for RPA Release."
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "UserName",
+      "defaultValue": "",
+      "required": true,
+      "groupName": "authenticate",
+      "helpMarkDown": "Authenticate Username for RPA Release"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "groupName": "authenticate",
+      "helpMarkDown": "Authenticate Password for RPA Release"
+    },
+    {
+      "name": "tenancy",
+      "type": "string",
+      "label": "Tenancy",
+      "defaultValue": "",
+      "required": false,
+      "groupName": "authenticate",
+      "helpMarkDown": "Authenticate Tenancy for RPA Release"
+    },
+    {
+      "name": "publishurl",
+      "type": "string",
+      "label": "URL",
+      "defaultValue": "",
+      "required": true,
+      "groupName": "publish",
+      "helpMarkDown": "Publish URL for RPA Release"
+    },
+    {
+      "name": "artifactdirectory",
+      "type": "string",
+      "label": "Artifact Directory",
+      "defaultValue": "",
+      "required": true,
+      "groupName": "publish",
+      "helpMarkDown": "Artifact Directory for RPA Release"
+    },
+    {
+      "name": "artifactname",
+      "type": "string",
+      "label": "Artifact Name",
+      "defaultValue": "",
+      "required": false,
+      "groupName": "publish",
+      "helpMarkDown": "Artifact Name for RPA Release"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "index.js",
+      "argumentFormat": ""
+    },
+    "PowerShell3": {
+      "target": "sample.ps1"
+    }
+  }
+}

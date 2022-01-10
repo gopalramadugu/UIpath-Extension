@@ -1,0 +1,55 @@
+{
+    "manifestVersion": 1,
+    "id": "rpa",
+    "name": "RPA Build and Release Tools",
+    "version": "1.0.0",
+    "publisher": "AFCBT",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for building/releasing with RPA. Includes build/release tasks.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [{
+            "path": "publishTask/publishTaskV1"
+        },
+        {
+            "path": "publishTask/publishTaskV2"
+        },
+        {
+            "path": "releaseTask/releaseTaskV1"
+        },
+        {
+            "path": "releaseTask/releaseTaskV2"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "publishTask",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "publishTask"
+            }
+        },
+		{
+            "id": "releaseTask",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "releaseTask"
+            }
+        }
+		
+    ]
+} 
